@@ -22,7 +22,6 @@ class UserRegistration(viewsets.ViewSet):
 class UserLogin(viewsets.ViewSet):
 
     serializer_class = LoginSerializer
-
     def create(self, request):
         try:
             serializer = LoginSerializer(data=request.data,context={'request':request})
