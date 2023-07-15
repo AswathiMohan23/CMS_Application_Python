@@ -1,13 +1,13 @@
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from user_app.serializer import RegistrationSerializer, LoginSerializer
 
 
-class UserRegistration(APIView):
+class UserRegistration(viewsets.ViewSet):
 
-    def post(self, request):
+    def create(self, request):
         try:
             serializer = RegistrationSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
@@ -19,11 +19,11 @@ class UserRegistration(APIView):
                             status=status.HTTP_400_BAD_REQUEST)
 
 
-class UserLogin(APIView):
+class UserLogin(viewsets.ViewSet):
 
     serializer_class = LoginSerializer
 
-    def post(self, request):
+    def create(self, request):
         try:
             serializer = LoginSerializer(data=request.data,context={'request':request})
 
