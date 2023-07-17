@@ -8,6 +8,8 @@ class BlogModel(models.Model):
     description=models.CharField(max_length=500)
     content=models.CharField(max_length=500)
     created_date=models.DateField(auto_now=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True)
+
 
     class Meta:
         db_table="blog_table"
