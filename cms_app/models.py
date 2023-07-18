@@ -14,6 +14,7 @@ class BlogModel(models.Model):
     class Meta:
         db_table="blog_table"
 
+
 class LikeModel(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     blog = models.ForeignKey(BlogModel, on_delete=models.CASCADE)
